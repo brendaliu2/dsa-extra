@@ -18,35 +18,39 @@ function sortLinkedList(a, b) {
   c.tail = b.tail;
 
   //loop through c
+  let prevCurr;
+  let prevCheck;
   let current = c.head;
   //while current
   while (current) {
+    prevCheck = current;
     let checking = current.next;
 
     //while(checking)
     while (checking) {
-      //current = a
-      //checking = b
-      
-      
-      //current = a
-      //checking = b
       if (current.val > checking.val) {
-        currentOrigNext = current.next;
-        checkingOrigNext = checking.next;
-        current.next = checkingOrigNext;
-        checking.next = currentOrigNext;
+        debugger
+        let checkingNextOg = checking.next;
         
-        // checking = checking.next;
+        prevCurr.next = checking;
+        checking.next = current.next;
+        
+        prevCheck.next = current;
+        current.next = checkingNextOg;
+        
+        current = prevCurr.next;
+        
+        prevCheck = checking;
+        checking = current.next;
       } else {
+        debugger
+        prevCheck = checking;
         checking = checking.next;
       }
     }
+    prevCurr = current;
     current = current.next;
   }
-
-
   return c;
-
 }
 
