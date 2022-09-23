@@ -3,6 +3,7 @@ const LinkedList = require('./linked-list.js');
 //Sort Sorted Linked List:
 // 1-3-5
 // 2-4-6-7
+//1-2-3
 // 1-3-5-2-4-6-7
 //1-2-5-3-4-6-7
 // orig next =3.next
@@ -31,9 +32,10 @@ function sortLinkedList(a, b) {
       if (current.val > checking.val) {
         debugger
         let checkingNextOg = checking.next;
+        let currentNextOg = current.next
         
         prevCurr.next = checking;
-        checking.next = current.next;
+        checking.next = currentNextOg;
         
         prevCheck.next = current;
         current.next = checkingNextOg;
